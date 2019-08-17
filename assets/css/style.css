@@ -10,6 +10,7 @@
 #quizGameScreen {
   background: lightgray;
   height: 30em;
+  border: 1px solid black;
 }
 #timer{
   font-size: 1.5em;
@@ -22,7 +23,7 @@
 }
 #currentQuestion {
   height: 3.5em;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   line-height: 3.5em;
   margin-left: 0.35em;
   margin-right: -0.3em;
@@ -30,7 +31,6 @@
 }
 
 .answerContainers {
-  border: 1px solid black;
   margin: 0.7em 10px;
   /* padding: 5px; */
   height: 3.5em;
