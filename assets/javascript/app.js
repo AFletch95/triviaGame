@@ -106,15 +106,6 @@ function showAnswer(){
   //display correct answer.
   $answer2Text.text(currentQuestionClass.correctAnswer);
   $answer3Text.empty();
-  let queryUrl = "https://api.giphy.com/v1/gifs/random?tag="+currentQuestionClass.correctAnswer+"&api_key=Jndh9UXi9mJk2q9APuSJ2tTC9jryrwhm"
-  $.ajax({url: queryUrl,method:"GET"})
-  .then(function(response){
-    var img = $('<img>');
-    img.attr("src",response.data.url);
-    $answer3Text.append(img);
-    console.log(response);
-
-  })
   $answer4Text.empty();
 }
 //DONE
