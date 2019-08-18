@@ -14,6 +14,7 @@ var questionIndex = 0;
 var qSeconds = 5; //TODO: set to 8 when finished
 var Aseconds = 5;
 var correct = true;
+var rand = 0;
 
 class trivaQuestions {
   constructor(index,question,answer1,answer2,answer3,correctAnswer){
@@ -35,12 +36,18 @@ var triviaArray = [question0,question1] //Array that contains all the questions.
 var currentQuestionClass = triviaArray[questionIndex]; //holds the current question class
 
 createPlayButton();
+//===================================================
 
+
+
+
+
+// Used to assign the answers to random boxes
 function randNum1_4(){
   return Math.floor(Math.random()*4)+1;
 }
 function randAnswerPlacement(obj){
-  let rand = randNum1_4();
+  rand = randNum1_4();
   console.log(rand);
 
   //Depending on what number rand is put the correct answer in that box
@@ -106,7 +113,7 @@ function showAnswer(){
   //display correct answer.
   $answer2Text.text(currentQuestionClass.correctAnswer);
   $answer3Text.empty();
-  $answer4Text.empty();
+  $answer4Text.empty(currentQuestionClass.question);
 }
 //DONE
 function createPlayButton(){
@@ -116,7 +123,18 @@ function createPlayButton(){
   $('button').attr("id","playButton");
   $('#playButton').attr("class","btn-lg btn-primary");
 }
-//DONE
+// on click functions
+
+$(document).on('click',".answerContainers",function(){
+  // console.log(this.attr());
+  console.log($(this).attr("data-index"));
+  if($(this).attr("data-index")==rand) correct = true;
+  else correct = false;
+  showAnswer();
+
+
+})
+
 $('#playButton').on("click",function(){ 
   $(this).remove();
   currentQuestionClass = triviaArray[questionIndex];  
@@ -124,5 +142,5 @@ $('#playButton').on("click",function(){
   randAnswerPlacement(currentQuestionClass);
   $questionNumber.text(questionIndex+1+" / 2");
   startTimer();
-  // put timer function here
+
 });
